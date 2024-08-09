@@ -1,5 +1,5 @@
-group 'com.lm.http_proxy'
-version '1.0'
+group "com.lm.http_proxy"
+version "1.0"
 
 buildscript {
     repositories {
@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath "com.android.tools.build:gradle:7.3.0"
     }
 }
 
@@ -19,15 +19,20 @@ rootProject.allprojects {
     }
 }
 
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
 
 android {
-    compileSdkVersion 28
+    if (project.android.hasProperty("namespace")) {
+        namespace = "com.lm.http_proxy"
+    }
+
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
     }
+
     lintOptions {
-        disable 'InvalidPackage'
+        disable "InvalidPackage"
     }
 }
